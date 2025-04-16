@@ -147,7 +147,6 @@ void MainWindow::on_toggleButton_clicked()
         ui->label_5->setText("You don't have an account? ");
         ui->toggleButton->setText("Sign up");
 
-        // Change background
         ui->label->setPixmap(QPixmap("C:/Users/Yousef/Pictures/newGym.png"));
         ui->LineEditUserName->setStyleSheet(R"(
             padding: 10px;
