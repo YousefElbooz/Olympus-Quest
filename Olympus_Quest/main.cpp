@@ -1,7 +1,7 @@
 #include "mainwindow.h"
-
+#include <QMessageBox>
 #include <QApplication>
-//From ELbooz
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
