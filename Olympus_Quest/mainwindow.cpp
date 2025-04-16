@@ -47,6 +47,22 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap logout("C:/Users/Yousef/Downloads/logout-svgrepo-com.svg");
     ui->BillingIcon_4->setPixmap(logout);
 
+
+    QPixmap Dash_MemNom("C:/Users/Yousef/Downloads/profile-round-1342-svgrepo-com.svg");
+    ui->TotalMemberIcon->setPixmap(Dash_MemNom);
+    QPixmap NotIconDash("C:/Users/Yousef/Downloads/notification-bell-1397-svgrepo-com.svg");
+    ui->NotificationDashIcon->setPixmap(NotIconDash);
+    QPixmap sandClockIcon("C:/Users/Yousef/Downloads/sand-clock-svgrepo-com.svg");
+    ui->SandClockICon->setPixmap(sandClockIcon);
+    QPixmap sessionnumIcon("C:/Users/Yousef/Downloads/stretching-svgrepo-com.svg");
+    ui->SessionICon->setPixmap(sessionnumIcon);
+    QPixmap TrainerNUmIcon("C:/Users/Yousef/Downloads/coach-coaching-physical-trainer-svgrepo-com.svg");
+    ui->TrainerNumICon->setPixmap(TrainerNUmIcon);
+    QPixmap cashICon("C:/Users/Yousef/Downloads/money-bag-svgrepo-com.svg");
+    ui->CashIcon->setPixmap(cashICon);
+    QPixmap chartIcon("C:/Users/Yousef/Downloads/line-chart-up-02-svgrepo-com.svg");
+    ui->Chart->setPixmap(chartIcon);
+
 }
 
 
@@ -154,7 +170,7 @@ void MainWindow::on_toggleButton_clicked()
             border: 1px solid #ccc;
             background-color: #c68f3b;
             font: 12pt "Yeasty Flavors";
-            border-radius: 10px;
+            border-radius: 20px;
             color: rgb(0, 0, 0);
         )");
         ui->LineEditPassword->setStyleSheet(R"(
@@ -162,7 +178,7 @@ void MainWindow::on_toggleButton_clicked()
             border: 1px solid #ccc;
             background-color: #c68f3b;
             font: 12pt "Yeasty Flavors";
-            border-radius: 10px;
+            border-radius: 20px;
             color: rgb(0, 0, 0);
         )");
         // ðŸ”µ Set button color for login
@@ -170,7 +186,7 @@ void MainWindow::on_toggleButton_clicked()
             QPushButton {
                 background-color: #c68f3b;
                 color: white;
-                border-radius: 10px;
+                border-radius: 25px;
                 padding: 10px;
             }
             QPushButton:hover {
@@ -190,7 +206,7 @@ void MainWindow::on_toggleButton_clicked()
             border: 1px solid #ccc;
             background-color: #008FC1;
             font: 12pt "Yeasty Flavors";
-            border-radius: 10px;
+            border-radius: 20px;
             color: rgb(0, 0, 0);
         )");
         ui->LineEditPassword->setStyleSheet(R"(
@@ -198,7 +214,7 @@ void MainWindow::on_toggleButton_clicked()
             border: 1px solid #ccc;
             background-color: #008FC1;
             font: 12pt "Yeasty Flavors";
-            border-radius: 10px;
+            border-radius: 20px;
             color: rgb(0, 0, 0);
         )");
 
@@ -207,7 +223,7 @@ void MainWindow::on_toggleButton_clicked()
             QPushButton {
                 background-color: #008FC1;
                 color: white;
-                border-radius: 10px;
+                border-radius: 25px;
                 padding: 10px;
             }
             QPushButton:hover {
