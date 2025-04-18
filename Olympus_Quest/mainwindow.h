@@ -26,7 +26,7 @@ private:
     QString getUserType();
     QString getGender();
     QString getSubscriptionDuration();
-    void navigateBasedOnUserType(const QString& userType);
+    void navigateBasedOnUserType(QString userType);
     void loadClassesFromFile();
 public:
     MainWindow(QWidget *parent = nullptr);
