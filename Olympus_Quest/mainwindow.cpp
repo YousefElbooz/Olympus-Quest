@@ -234,6 +234,7 @@ QString MainWindow::getSubscriptionDuration() {
 
 //-------------------------------------- File-based Class Handling --------------------------------------//
 
+
 void MainWindow::loadClassesFromFile() {
     FileHandler::loadClassesFromFile(ui->tableWidget, "C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt");
 }
