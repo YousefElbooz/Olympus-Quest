@@ -61,16 +61,16 @@ QString FileHandler::getNextId() {
     return QString::number(maxId + 1);
 }
 
-bool FileHandler::validateLoginById(const QString& id,const QString& email, const QString& password, QString& userType) {
-    if (!usersMap.contains(id)) return false;
+QString FileHandler::validateLoginById(const QString& id,const QString& email, const QString& password) {
+    if (!usersMap.contains(id)) return "";
 
     Member* m = usersMap[id];
     if (m->getPassword() == password && m->getEmail()==email) {
-        userType = m->getUserType();
-        return true;
+        QString userType = m->getUserType();
+        return userType;
     }
 
-    return false;
+    return "";
 }
 
 bool FileHandler::saveUsers() {

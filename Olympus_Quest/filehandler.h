@@ -15,7 +15,7 @@ public:
     static void loadUsers(const QString& path);
     static bool userExists(const QString& email);
     static bool appendUser(const QStringList& userFieldsWithoutId);
-    static bool validateLoginById(const QString& id, const QString &email, const QString& password, QString& userType);
+    static QString validateLoginById(const QString& id,const QString& email, const QString& password);
     static QString getNextId();
     static bool saveUsers(); // save once at the end
     static void freeUsers(); // cleanup

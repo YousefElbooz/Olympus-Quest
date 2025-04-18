@@ -154,10 +154,10 @@ void MainWindow::setPixmapForWidgets() {
 //-------------------------------------- Auth Handlers --------------------------------------//
 
 void MainWindow::handleLogin(QString id,QString email, QString password) {
-    QString userType;
-    if (FileHandler::validateLoginById(id,email, password, userType)) {
-        QMessageBox::information(this, "Login", "Login successful as " + userType);
-        navigateBasedOnUserType(userType);
+    QString UserType= FileHandler::validateLoginById(id,email, password);
+    if (!UserType.isEmpty()) {
+        QMessageBox::information(this, "Login", "Login successful as " + UserType);
+        navigateBasedOnUserType(UserType);
     } else {
         QMessageBox::warning(this, "Login", "Invalid ID or password");
     }
@@ -193,10 +193,11 @@ void MainWindow::handleSignUp(QString name, QString age, QString email, QString 
 
 
 
-void MainWindow::navigateBasedOnUserType(const QString& userType) {
-    if (userType == "manager") {
+void MainWindow::navigateBasedOnUserType(QString userType) {
+    if (userType == "manger") {
         ui->FullWiedgit->setCurrentIndex(1);
         ui->stackedWidget->setCurrentIndex(0);
+
         setActiveSection(ui->Dashboardbtn, "#f1c27d");
     } else if (userType == "staff") {
         // Future extension for staff
@@ -232,6 +233,7 @@ QString MainWindow::getSubscriptionDuration() {
 }
 
 //-------------------------------------- File-based Class Handling --------------------------------------//
+
 
 void MainWindow::loadClassesFromFile() {
     FileHandler::loadClassesFromFile(ui->tableWidget, "C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt");
@@ -273,13 +275,13 @@ void MainWindow::on_Dashboardbtn_clicked() {
 }
 
 void MainWindow::on_GymMangbtn_clicked() {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(1);
     loadClassesFromFile();
     setActiveSection(ui->GymMangbtn, "#aad1e6");
 }
 
 void MainWindow::on_TMbtn_clicked() {
-    ui->stackedWidget->setCurrentIndex(1);
+    ui->stackedWidget->setCurrentIndex(2);
     setActiveSection(ui->TMbtn, "#f1c27d");
 }
 
