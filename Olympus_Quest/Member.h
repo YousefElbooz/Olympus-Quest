@@ -2,7 +2,9 @@
 #define MEMBER_H
 
 #include <QString>
-#include <QList>
+#include <QVector>
+#include "Gym_classes.h"
+
 class Member {
 private:
     QString id;
@@ -16,6 +18,8 @@ private:
     QString duration;
     QString gender;
     QString userType;
+    QVector<Gym_classes> attendedClasses;
+    // QVector<Gym_classes> attendedClasses;
 
 public:
     Member() = default;
@@ -36,6 +40,12 @@ public:
     QString getDuration() const;
     QString getGender() const;
     QString getUserType() const;
+    QVector<Gym_classes>& getAttendedClassesRef(); // Add this to allow editing in request function
+
+    // Attended Classes
+    QVector<Gym_classes> getAttendedClasses() const;
+    void addAttendedClass(const Gym_classes& gymClass);
+    void clearAttendedClasses();
 
     // File I/O helpers
     QString toLine() const;

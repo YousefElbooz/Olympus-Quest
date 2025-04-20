@@ -27,7 +27,7 @@ private:
     QString getGender();
     QString getSubscriptionDuration();
     void navigateBasedOnUserType(QString userType);
-    void loadClassesFromFile();
+    QString currentMemberId;
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -54,13 +54,16 @@ private slots:
     void on_Notibtn_3_clicked();
     void on_Billbtn_3_clicked();
     void on_ProfileBtn_3_clicked();
-    void on_SettingBtn_3_clicked();
     void on_LogOutBtn_3_clicked();
     void on_SignUp_clicked();
     void on_toggleButton_3_clicked();
     void on_Dashboard_15_clicked();
     void on_Dashboard_13_clicked();
     void on_Dashboard_16_clicked();
+
+    void on_Dashboard_17_clicked();
+
+    void on_Aubtn_4_clicked();
 
 private:
     Ui::MainWindow *ui;

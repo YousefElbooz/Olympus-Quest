@@ -10,19 +10,25 @@ CONFIG += c++17
 
 SOURCES += \
     Gym_classes.cpp \
-    Manager.cpp \
     Member.cpp \
+    coach.cpp \
     filehandler.cpp \
     main.cpp \
     main_alaa.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    manager.cpp \
+    receptionist.cpp \
+    staff.cpp
 
 HEADERS += \
     Gym_classes.h \
-    Manager.h \
     Member.h \
+    coach.h \
     filehandler.h \
-    mainwindow.h
+    mainwindow.h \
+    manager.h \
+    receptionist.h \
+    staff.h
 
 FORMS += \
     mainwindow.ui
@@ -33,8 +39,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    Staff.txt \
     classes.txt \
     enrollments.txt \
-    members.txt \
-    temp.txt \
     users.txt

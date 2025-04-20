@@ -1,5 +1,2 @@
-10|Mohamed alaa|01062116844|s|20|Male|d|d|d|d
-10|Mohamed|01062116844|d|0|||||
-10|Mohamed Alaa|01062116844|ds|20|Male|d|d|d|d
-20|Ali|025555|s|20|Male|s|4|s|s
-40|d|5|d|20|N|s|f|f|f
+1:mmmm:hhh:hhhh:hhhh:hhh:hhh:hhhh:9 months:male:manager
+---

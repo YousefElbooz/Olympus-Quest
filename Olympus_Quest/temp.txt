@@ -1,5 +1,0 @@
-100|Yoga|Mohamed alaa|50|2
-200|Belly dance|Sakira|50|3
-300|OOP|ELBOOZ|10|1
-400|Java|Gemmy|50|3
-500|Kick Boxing|Ali Ahmed|50|10

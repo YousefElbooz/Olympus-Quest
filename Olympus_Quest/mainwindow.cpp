@@ -18,24 +18,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->FullWiedgit->setCurrentIndex(0);
     ui->stackedWidget_2->setCurrentIndex(0);
     setPixmapForWidgets();
-    FileHandler::loadUsers("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/users.txt");  // ✅ Load user data once
-    // unordered_map<int, Member> members;
-    // unordered_map<int, Staff> staff;
-    // map<string, vector<GymClass>> monthlyClasses;
-    // map<string, map<string, map<string, BookingCourt>>> courtBookings;
-
-    // // Load all data from files at the beginning
-    // FileHandler::loadMembers(members);
-    // FileHandler::loadStaff(staff);
-    // FileHandler::loadClasses(monthlyClasses);
-    // FileHandler::loadCourtBookings(courtBookings);
-
+    FileHandler::loadMembers("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/users.txt");
+    FileHandler::loadStaff("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/staff.txt");
+    FileHandler::loadAllClasses("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt");
+    QList<QTableWidget*> tablewidgets = {ui->tableWidget,ui->tableWidget_4};
+    FileHandler::populateClassesTable(tablewidgets);
 }
 
 MainWindow::~MainWindow() {
     delete ui;
-    FileHandler::saveUsers();
+    FileHandler::saveMembers("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/users.txt");
+    FileHandler::saveStaff("C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/staff.txt");
     FileHandler::freeUsers();
+    FileHandler::saveAllClasses();
+    FileHandler::saveAllClasses();
+
 }
 
 //-------------------------------------- UI Helper Functions --------------------------------------//
@@ -75,7 +72,7 @@ void MainWindow::setNotActiveSection() {
         ui->Dashboardbtn, ui->GymMangbtn, ui->TMbtn, ui->Aubtn, ui->Dashboard_5,
         ui->Notibtn, ui->Billbtn, ui->ProfileBtn, ui->SettingBtn,
         ui->Dashboardbtn_3, ui->GymMangbtn_3, ui->TMbtn_3, ui->Aubtn_3, ui->Dashboard_11,
-        ui->Notibtn_3, ui->Billbtn_3, ui->ProfileBtn_3, ui->SettingBtn_3
+        ui->Notibtn_3, ui->Billbtn_3, ui->ProfileBtn_3, ui->Aubtn_4
     };
 
     for (QPushButton* btn : buttons) {
@@ -113,7 +110,7 @@ void MainWindow::setPixmapForWidgets() {
                             "C:/Users/Yousef/Downloads/coach-coaching-physical-trainer-svgrepo-com.svg", "C:/Users/Yousef/Downloads/money-bag-svgrepo-com.svg",
                             "C:/Users/Yousef/Downloads/line-chart-up-02-svgrepo-com.svg","C:/Users/Yousef/Downloads/enter-svgrepo-com.svg",
                             "C:/Users/Yousef/Downloads/cancel-photo-svgrepo-com.svg","C:/Users/Yousef/Downloads/calendar-event-available-svgrepo-com.svg",
-        "C:/Users/Yousef/Downloads/home-workouts-svgrepo-com.svg","C:/Users/Yousef/Downloads/auto-renewal-2-circle-fill-svgrepo-com.svg"};
+        "C:/Users/Yousef/Downloads/home-workouts-svgrepo-com.svg","C:/Users/Yousef/Downloads/auto-renewal-2-circle-fill-svgrepo-com.svg","C:/Users/Yousef/Downloads/court-playground-svgrepo-com.svg"};
 
     // Setting Pixmaps for each image
     ui->label->setPixmap(QPixmap(imagePaths[0]));
@@ -145,19 +142,41 @@ void MainWindow::setPixmapForWidgets() {
     ui->NotificattionIcon_3->setPixmap(QPixmap(imagePaths[7]));
     ui->BillingIcon_9->setPixmap(QPixmap(imagePaths[8]));
     ui->BillingIcon_10->setPixmap(QPixmap(imagePaths[9]));
-    ui->BillingIcon_11->setPixmap(QPixmap(imagePaths[10]));
     ui->BillingIcon_12->setPixmap(QPixmap(imagePaths[11]));
     ui->logo_3->setPixmap(QPixmap(imagePaths[1]));
+    ui->AddUserIcon_4->setPixmap(QPixmap(imagePaths[24]));
 
 }
 
 //-------------------------------------- Auth Handlers --------------------------------------//
 
-void MainWindow::handleLogin(QString id,QString email, QString password) {
-    QString UserType= FileHandler::validateLoginById(id,email, password);
-    if (!UserType.isEmpty()) {
-        QMessageBox::information(this, "Login", "Login successful as " + UserType);
-        navigateBasedOnUserType(UserType);
+void MainWindow::handleLogin(QString id, QString email, QString password) {
+    QString userType;
+
+    // First, try to match as a member
+    if (FileHandler::getUsers().contains(id)) {
+        Member* m = FileHandler::getUsers()[id];
+        if (m->getEmail() == email && m->getPassword() == password) {
+            currentMemberId = id;
+            userType = m->getUserType();
+        }
+    }
+
+    // If not a member, try staff (even if ID is same)
+    if (userType.isEmpty()) {
+        bool ok;
+        int numericId = id.toInt(&ok);
+        if (ok && FileHandler::getStaff().contains(numericId)) {
+            Staff* staff = FileHandler::getStaff()[numericId];
+            if (email == "placeholder@mail.com" && password == "123456") {
+                userType = staff->getRole().toLower();
+            }
+        }
+    }
+
+    if (!userType.isEmpty()) {
+        QMessageBox::information(this, "Login", "Login successful as " + userType);
+        navigateBasedOnUserType(userType);
     } else {
         QMessageBox::warning(this, "Login", "Invalid ID or password");
     }
@@ -183,8 +202,14 @@ void MainWindow::handleSignUp(QString name, QString age, QString email, QString 
         name, age, email, address, password, paymentDate, phone, duration, gender, userType
     };
 
-    if (FileHandler::appendUser(userData)) {
-        QMessageBox::information(this, "Sign Up", "Account created successfully");
+    bool success = false;
+    if (userType.toLower() == "member") {
+        success = FileHandler::appendMember(userData);
+    } else {
+        success = FileHandler::appendStaff(userData);
+    }
+
+    if (success) {
         ui->stackedWidget_3->setCurrentIndex(0);
     } else {
         QMessageBox::critical(this, "Error", "Failed to create account.");
@@ -192,19 +217,28 @@ void MainWindow::handleSignUp(QString name, QString age, QString email, QString 
 }
 
 
-
 void MainWindow::navigateBasedOnUserType(QString userType) {
-    if (userType == "manger") {
+    if (userType == "manager") {
         ui->FullWiedgit->setCurrentIndex(1);
         ui->stackedWidget->setCurrentIndex(0);
-
         setActiveSection(ui->Dashboardbtn, "#f1c27d");
-    } else if (userType == "staff") {
-        // Future extension for staff
+    } else if (userType == "receptionist") {
+        ui->FullWiedgit->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentIndex(1);
+        setActiveSection(ui->GymMangbtn, "#aad1e6");
+    } else if (userType == "coach") {
+        ui->FullWiedgit->setCurrentIndex(1);
+        ui->stackedWidget->setCurrentIndex(2);
+        setActiveSection(ui->TMbtn, "#f1c27d");
     } else if (userType == "member") {
         ui->FullWiedgit->setCurrentIndex(2);
         ui->stackedWidget_3->setCurrentIndex(0);
         setActiveSection(ui->Dashboardbtn_3, "#f1c27d");
+        if (currentMemberId.isEmpty()) {
+            QMessageBox::warning(this, "Error", "No member is currently logged in.");
+            return;
+        }
+        FileHandler::populateMemberAttendedClasses(ui->tableWidget_3, currentMemberId);
     }
 }
 
@@ -213,7 +247,8 @@ void MainWindow::navigateBasedOnUserType(QString userType) {
 QString MainWindow::getUserType() {
     if (ui->MemberRadio->isChecked()) return "member";
     if (ui->MangerrRadio->isChecked()) return "manager";
-    if (ui->StaffRadio->isChecked()) return "staff";
+    if (ui->StaffRadio->isChecked()) return "coach";
+    if(ui->StaffRadio_2->isChecked()) return "receptionist";
     QMessageBox::warning(this, "Error", "Please select a user type.");
     return "";
 }
@@ -235,9 +270,6 @@ QString MainWindow::getSubscriptionDuration() {
 //-------------------------------------- File-based Class Handling --------------------------------------//
 
 
-void MainWindow::loadClassesFromFile() {
-    FileHandler::loadClassesFromFile(ui->tableWidget, "C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt");
-}
 
 void MainWindow::on_Dashboard_15_clicked() {
     QStringList filters = {
@@ -247,24 +279,27 @@ void MainWindow::on_Dashboard_15_clicked() {
         ui->lineEdit_4->text().trimmed(),
         ui->lineEdit_5->text().trimmed()
     };
-    FileHandler::filterClasses(ui->tableWidget, "C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt", filters);
+    FileHandler::filterClasses(ui->tableWidget,filters);
 }
 
+
+
 void MainWindow::on_Dashboard_16_clicked() {
+
     QStringList filters = {
-        ui->lineEdit_6->text().trimmed(),
-        ui->lineEdit_7->text().trimmed(),
-        ui->lineEdit_8->text().trimmed(),
-        ui->lineEdit_9->text().trimmed(),
-        ui->lineEdit_10->text().trimmed()
+        ui->lineEdit_11->text().trimmed(),
+        ui->lineEdit_12->text().trimmed(),
+        ui->lineEdit_13->text().trimmed(),
+        ui->lineEdit_14->text().trimmed(),
+        ui->lineEdit_15->text().trimmed()
     };
-    bool allSpecified = std::all_of(filters.begin(), filters.end(), [](const QString& f) {
-        return !(f.isEmpty() || f.compare("any", Qt::CaseInsensitive) == 0);
-    });
-    if (allSpecified) {
-        FileHandler::logAttendedClass("C:/path/to/attended_cl", filters);
+
+    if (FileHandler::requestClassesForMember(currentMemberId, filters)) {
+        QMessageBox::information(this, "Success", "Class(es) added to your schedule.");
+        FileHandler::populateMemberAttendedClasses(ui->tableWidget_3, currentMemberId);
+    } else {
+        QMessageBox::warning(this, "No Match", "No classes matched your filters.");
     }
-    FileHandler::filterClasses(ui->tableWidget, "C:/Users/Yousef/Desktop/Olympus-Quest/Olympus_Quest/classes.txt", filters);
 }
 
 //-------------------------------------- UI Event Handlers (Dashboard and Navigation) --------------------------------------//
@@ -276,7 +311,6 @@ void MainWindow::on_Dashboardbtn_clicked() {
 
 void MainWindow::on_GymMangbtn_clicked() {
     ui->stackedWidget->setCurrentIndex(1);
-    loadClassesFromFile();
     setActiveSection(ui->GymMangbtn, "#aad1e6");
 }
 
@@ -381,8 +415,13 @@ void MainWindow::on_Dashboardbtn_3_clicked() {
 
 void MainWindow::on_GymMangbtn_3_clicked() {
     ui->stackedWidget_3->setCurrentIndex(1);
-    loadClassesFromFile();
     setActiveSection(ui->GymMangbtn_3, "#f1c27d");
+}
+
+void MainWindow::on_Aubtn_4_clicked()
+{
+    ui->stackedWidget_3->setCurrentIndex(4);
+    setActiveSection(ui->Aubtn_4, "#f1c27d");
 }
 
 void MainWindow::on_TMbtn_3_clicked() {
@@ -396,28 +435,23 @@ void MainWindow::on_Aubtn_3_clicked() {
 }
 
 void MainWindow::on_Dashboard_11_clicked() {
-    ui->stackedWidget_3->setCurrentIndex(4);
+    ui->stackedWidget_3->setCurrentIndex(5);
     setActiveSection(ui->Dashboard_11, "#f1c27d");
 }
 
 void MainWindow::on_Notibtn_3_clicked() {
-    ui->stackedWidget_3->setCurrentIndex(5);
+    ui->stackedWidget_3->setCurrentIndex(6);
     setActiveSection(ui->Notibtn_3, "#f1c27d");
 }
 
 void MainWindow::on_Billbtn_3_clicked() {
-    ui->stackedWidget_3->setCurrentIndex(6);
+    ui->stackedWidget_3->setCurrentIndex(7);
     setActiveSection(ui->Billbtn_3, "#f1c27d");
 }
 
 void MainWindow::on_ProfileBtn_3_clicked() {
-    ui->stackedWidget_3->setCurrentIndex(7);
-    setActiveSection(ui->ProfileBtn_3, "#f1c27d");
-}
-
-void MainWindow::on_SettingBtn_3_clicked() {
     ui->stackedWidget_3->setCurrentIndex(8);
-    setActiveSection(ui->SettingBtn_3, "#f1c27d");
+    setActiveSection(ui->ProfileBtn_3, "#f1c27d");
 }
 
 void MainWindow::on_LogOutBtn_3_clicked() {
@@ -509,6 +543,23 @@ void MainWindow::on_Dashboard_13_clicked() {
    - on_Dashboard_13_clicked
 
 *-----------------------------------------------------------------------------------------------*/
+
+
+
+
+void MainWindow::on_Dashboard_17_clicked()
+{
+    QStringList filters = {
+        ui->lineEdit_6->text().trimmed(),
+        ui->lineEdit_7->text().trimmed(),
+        ui->lineEdit_8->text().trimmed(),
+        ui->lineEdit_9->text().trimmed(),
+        ui->lineEdit_10->text().trimmed()
+    };
+    FileHandler::filterMemberClasses(ui->tableWidget_3,currentMemberId,filters);
+}
+
+
 
 
 
