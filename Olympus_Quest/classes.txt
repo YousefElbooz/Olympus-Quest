@@ -1,50 +1,50 @@
 1|Strength Training|07:00 AM|Marwa Ehab|Scheduled|7/7
-2|Stretching|02:00 PM|Laila Hesham|Scheduled|7/9
-3|Lower Body|04:00 PM|Amr Ghanem|Scheduled|15/5
-4|Gym|11:00 AM|Laila Hesham|Scheduled|9/10
-5|Cardio|09:00 AM|Marwa Ehab|Scheduled|7/1
-6|Cycling|10:00 PM|Marwa Ehab|Scheduled|14/0
-7|Stretching|02:00 PM|Marwa Ehab|Scheduled|12/7
-8|Cycling|02:00 PM|Yousef Ramadan|Scheduled|6/9
+2|Stretching|02:00 PM|Laila Hesham|Scheduled|17/10
+3|Lower Body|04:00 PM|Amr Ghanem|Scheduled|15/6
+4|Gym|11:00 AM|Laila Hesham|Scheduled|19/12
+5|Cardio|09:00 AM|Marwa Ehab|Scheduled|7/2
+6|Cycling|10:00 PM|Marwa Ehab|Scheduled|14/1
+7|Stretching|02:00 PM|Marwa Ehab|Scheduled|12/8
+8|Cycling|02:00 PM|Yousef Ramadan|Scheduled|16/9
 9|Tabata|01:00 PM|Hagar Ali|Scheduled|7/4
 10|Boxing|10:00 AM|Yousef Ramadan|Scheduled|6/1
-11|Dance|08:00 AM|Marwa Ehab|Scheduled|13/6
+11|Dance|08:00 AM|Marwa Ehab|Scheduled|13/7
 12|Kickboxing|04:00 PM|Mohamed Alaa|Scheduled|13/8
-13|Functional Training|05:00 PM|Yousef Ramadan|Scheduled|5/9
+13|Functional Training|05:00 PM|Yousef Ramadan|Scheduled|15/9
 14|Cardio|06:00 AM|Mohamed Alaa|Scheduled|7/4
 15|Cardio|09:00 PM|Marwa Ehab|Scheduled|13/10
 16|Boxing|10:00 PM|Amr Ghanem|Scheduled|15/10
-17|Balance|07:00 AM|Yousef Ramadan|Scheduled|5/9
+17|Balance|07:00 AM|Yousef Ramadan|Scheduled|15/9
 18|Stretching|07:00 PM|Assma Galal|Scheduled|13/2
 19|Meditation|11:00 AM|Laila Hesham|Scheduled|12/0
 20|TRX|10:00 PM|Laila Hesham|Scheduled|9/9
-21|Abs|11:00 AM|Assma Galal|Scheduled|6/1
+21|Abs|11:00 AM|Assma Galal|Scheduled|6/2
 22|Balance|09:00 PM|Omar Sherif|Scheduled|8/1
 23|Step Class|06:00 PM|Assma Galal|Scheduled|8/2
 24|Upper Body|01:00 PM|Yousef Ramadan|Scheduled|6/3
-25|Pilates|01:00 PM|Marwa Ehab|Scheduled|9/10
-26|Meditation|08:00 PM|Yousef Ramadan|Scheduled|6/7
-27|TRX|07:00 AM|Omar Sherif|Scheduled|6/9
+25|Pilates|01:00 PM|Marwa Ehab|Scheduled|19/10
+26|Meditation|08:00 PM|Yousef Ramadan|Scheduled|16/7
+27|TRX|07:00 AM|Omar Sherif|Scheduled|16/10
 28|Yoga|06:00 AM|Sarah Fathy|Scheduled|6/6
 29|Mobility|09:00 PM|Assma Galal|Scheduled|11/7
 30|Kickboxing|01:00 PM|Laila Hesham|Scheduled|15/3
-31|Zumba|08:00 AM|Mohamed Alaa|Scheduled|6/10
+31|Zumba|08:00 AM|Mohamed Alaa|Scheduled|16/10
 32|Cycling|09:00 AM|Laila Hesham|Scheduled|7/7
 33|Cardio|07:00 AM|Omar Sherif|Scheduled|6/5
 34|Spin Class|03:00 PM|Mohamed Alaa|Scheduled|6/1
 35|Tabata|08:00 AM|Laila Hesham|Scheduled|11/6
 36|Functional Training|10:00 AM|Mohamed Alaa|Scheduled|11/7
 37|Aerobics|11:00 AM|Sarah Fathy|Scheduled|8/3
-38|Core|03:00 PM|Omar Sherif|Scheduled|7/10
+38|Core|03:00 PM|Omar Sherif|Scheduled|17/10
 39|Mobility|06:00 AM|Amr Ghanem|Scheduled|7/5
 40|Cycling|08:00 PM|Omar Sherif|Scheduled|13/10
 41|Mobility|10:00 AM|Hagar Ali|Scheduled|9/9
 42|Bootcamp|09:00 PM|Amr Ghanem|Scheduled|7/7
-43|Stretching|02:00 PM|Mohamed Alaa|Scheduled|11/7
-44|Plyometrics|08:00 PM|Assma Galal|Scheduled|7/9
-45|CrossFit|07:00 AM|Omar Sherif|Scheduled|9/2
-46|Upper Body|03:00 PM|Hagar Ali|Scheduled|5/9
+43|Stretching|02:00 PM|Mohamed Alaa|Scheduled|11/8
+44|Plyometrics|08:00 PM|Assma Galal|Scheduled|20/9
+45|CrossFit|07:00 AM|Omar Sherif|Scheduled|20/2
+46|Upper Body|03:00 PM|Hagar Ali|Scheduled|10/9
 47|Core|09:00 PM|Laila Hesham|Scheduled|13/3
 48|Bootcamp|01:00 PM|Mohamed Alaa|Scheduled|7/4
-49|Tabata|08:00 AM|Yousef Ramadan|Scheduled|6/9
-50|Core|07:00 PM|Amr Ghanem|Scheduled|6/7
+49|Tabata|08:00 AM|Yousef Ramadan|Scheduled|10/9
+50|Core|07:00 PM|Amr Ghanem|Scheduled|10/7

@@ -39,18 +39,16 @@ private slots:
     void on_GymMangbtn_clicked();
     void on_TMbtn_clicked();
     void on_Aubtn_clicked();
-    void on_Dashboard_5_clicked();
     void on_Notibtn_clicked();
     void on_Billbtn_clicked();
     void on_ProfileBtn_clicked();
     void on_SettingBtn_clicked();
     void on_LogOutBtn_clicked();
-    void on_tableWidget_cellEntered(int row, int column);
     void on_Dashboardbtn_3_clicked();
     void on_GymMangbtn_3_clicked();
     void on_TMbtn_3_clicked();
     void on_Aubtn_3_clicked();
-    void on_Dashboard_11_clicked();
+    void on_Subscriptionbtn_clicked();
     void on_Notibtn_3_clicked();
     void on_Billbtn_3_clicked();
     void on_ProfileBtn_3_clicked();
@@ -60,10 +58,9 @@ private slots:
     void on_Dashboard_15_clicked();
     void on_Dashboard_13_clicked();
     void on_Dashboard_16_clicked();
-
     void on_Dashboard_17_clicked();
-
     void on_Aubtn_4_clicked();
+    void on_AdminBtn_clicked();
 
 private:
     Ui::MainWindow *ui;

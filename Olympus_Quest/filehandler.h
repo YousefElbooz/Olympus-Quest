@@ -1,6 +1,7 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
+
 #include <QString>
 #include <QMap>
 #include <QList>
@@ -39,7 +40,6 @@ public:
     static void loadAllClasses(const QString& path);
     static bool saveAllClasses();
 
-    // UI logic
     static QString getNextMemberId();
     static QString getNextStaffId();
     static bool appendMember(const QStringList& memberFields);

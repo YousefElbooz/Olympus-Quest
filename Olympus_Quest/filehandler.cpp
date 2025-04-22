@@ -300,8 +300,8 @@ bool FileHandler::requestClassesForMember(const QString& memberId, const QString
             return g.getId() == cls.getId();
         });
 
-        if (matched && cls.getCapacity() > 0 && !alreadyEnrolled) {
-            cls.setEnrolled(cls.getEnrolled() + 1);
+        if (matched && cls.getCapacity() > cls.getEnrolled() && !alreadyEnrolled) {
+            cls.setEnrolled(int(cls.getEnrolled()) + 1);
             Gym_classes cloned = cls;
             member->addAttendedClass(cloned);
 
@@ -394,7 +394,7 @@ void FileHandler::populateClassesTable(QList<QTableWidget*> tables) {
             tableWidget->setItem(row, 2, new QTableWidgetItem(gc.getTime().toString("hh:mm AP")));
             tableWidget->setItem(row, 3, new QTableWidgetItem(gc.getTrainer()));
             tableWidget->setItem(row, 4, new QTableWidgetItem(gc.getStatus()));
-            tableWidget->setItem(row, 5, new QTableWidgetItem(QString::number(gc.getCapacity())));
+            tableWidget->setItem(row, 5, new QTableWidgetItem(QString::number(gc.getCapacity()-gc.getEnrolled())));
         }
     }
 }

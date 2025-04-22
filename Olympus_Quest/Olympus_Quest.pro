@@ -41,5 +41,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     Staff.txt \
     classes.txt \
+    coach.txt \
     enrollments.txt \
     users.txt

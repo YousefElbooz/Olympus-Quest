@@ -1,15 +1,16 @@
 1:Yosef:19:yoosefelbooz@gmail.com:cairo Naser City:01218972:4/18/2025:01098676433:9 months:male:member
+16|Boxing|10:00 PM|Amr Ghanem|Scheduled|15/10
+17|Balance|07:00 AM|Yousef Ramadan|Scheduled|15/9
+18|Stretching|07:00 PM|Assma Galal|Scheduled|13/2
+19|Meditation|11:00 AM|Laila Hesham|Scheduled|12/0
+5|Cardio|09:00 AM|Marwa Ehab|Scheduled|7/2
+2|Stretching|02:00 PM|Laila Hesham|Scheduled|17/10
+3|Lower Body|04:00 PM|Amr Ghanem|Scheduled|15/6
+4|Gym|11:00 AM|Laila Hesham|Scheduled|19/12
 6|Cycling|10:00 PM|Marwa Ehab|Scheduled|14/1
-7|Stretching|02:00 PM|Marwa Ehab|Scheduled|12/1
-8|Cycling|02:00 PM|Yousef Ramadan|Scheduled|6/1
-9|Tabata|01:00 PM|Hagar Ali|Scheduled|7/1
-25|Pilates|01:00 PM|Marwa Ehab|Scheduled|9/1
-2|Stretching|02:00 PM|Laila Hesham|Scheduled|6/1
-1|Strength Training|07:00 AM|Marwa Ehab|Scheduled|6/1
-49|Tabata|08:00 AM|Yousef Ramadan|Scheduled|6/1
-40|Cycling|08:00 PM|Omar Sherif|Scheduled|12/1
-48|Bootcamp|01:00 PM|Mohamed Alaa|Scheduled|7/1
-12|Kickboxing|04:00 PM|Mohamed Alaa|Scheduled|13/8
+7|Stretching|02:00 PM|Marwa Ehab|Scheduled|12/8
+11|Dance|08:00 AM|Marwa Ehab|Scheduled|13/7
+21|Abs|11:00 AM|Assma Galal|Scheduled|6/2
 ---
 3:ALaa:19:alaa@gmail.com:Ain SHams:01218972:4/18/2025:000000:9 months:male:member
 ---

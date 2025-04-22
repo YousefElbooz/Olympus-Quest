@@ -32,7 +32,6 @@ MainWindow::~MainWindow() {
     FileHandler::freeUsers();
     FileHandler::saveAllClasses();
     FileHandler::saveAllClasses();
-
 }
 
 //-------------------------------------- UI Helper Functions --------------------------------------//
@@ -42,9 +41,8 @@ void MainWindow::setButtonStyle(QPushButton* button, const QString& backgroundCo
         QPushButton {
             background-color: transparent;
             color: black;
-            font: 10pt "Yeasty Flavors";
+            font: 18pt "Yeasty Flavors";
             text-align: left;
-            padding: 10px;
             border-radius: 5px;
         }
         QPushButton:hover {
@@ -58,9 +56,8 @@ void MainWindow::setNotActiveSection() {
         QPushButton {
             background-color: transparent;
             color: black;
-            font: 10pt "Yeasty Flavors";
+            font: 18pt "Yeasty Flavors";
             text-align: left;
-            padding: 10px;
             border-radius: 5px;
         }
         QPushButton:hover {
@@ -69,9 +66,9 @@ void MainWindow::setNotActiveSection() {
     )";
 
     QPushButton* buttons[] = {
-        ui->Dashboardbtn, ui->GymMangbtn, ui->TMbtn, ui->Aubtn, ui->Dashboard_5,
+        ui->Dashboardbtn, ui->GymMangbtn, ui->TMbtn, ui->Aubtn, ui->AdminBtn,
         ui->Notibtn, ui->Billbtn, ui->ProfileBtn, ui->SettingBtn,
-        ui->Dashboardbtn_3, ui->GymMangbtn_3, ui->TMbtn_3, ui->Aubtn_3, ui->Dashboard_11,
+        ui->Dashboardbtn_3, ui->GymMangbtn_3, ui->TMbtn_3, ui->Aubtn_3, ui->Subscriptionbtn,
         ui->Notibtn_3, ui->Billbtn_3, ui->ProfileBtn_3, ui->Aubtn_4
     };
 
@@ -88,9 +85,8 @@ void MainWindow::setActiveSection(QPushButton* activeBtn, const QString& logoCol
         QPushButton {
             background-color: #c68f3b;
             color: white;
-            font: bold 10pt "Yeasty Flavors";
+            font: bold 18pt "Yeasty Flavors";
             text-align: left;
-            padding: 10px;
             border-radius: 5px;
         }
     )");
@@ -99,54 +95,87 @@ void MainWindow::setActiveSection(QPushButton* activeBtn, const QString& logoCol
 
 void MainWindow::setPixmapForWidgets() {
     QString imagePaths[] = {
-                            "C:/Users/Yousef/Pictures/newGym.png", "C:/Users/Yousef/Downloads/ChatGPT Image Apr 15, 2025, 10_53_31 PM.png",
-                            "C:/Users/Yousef/Downloads/dashboard-svgrepo-com.svg", "C:/Users/Yousef/Downloads/gym-dumbbell-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/group-of-businessmen-svgrepo-com.svg", "C:/Users/Yousef/Downloads/add-user-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/user-admin-svgrepo-com.svg", "C:/Users/Yousef/Downloads/notification-bell-1397-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/invoice-bill-svgrepo-com.svg", "C:/Users/Yousef/Downloads/profile-round-1342-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/setting-4-svgrepo-com.svg", "C:/Users/Yousef/Downloads/logout-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/profile-round-1342-svgrepo-com.svg", "C:/Users/Yousef/Downloads/notification-bell-1397-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/sand-clock-svgrepo-com.svg", "C:/Users/Yousef/Downloads/stretching-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/coach-coaching-physical-trainer-svgrepo-com.svg", "C:/Users/Yousef/Downloads/money-bag-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/line-chart-up-02-svgrepo-com.svg","C:/Users/Yousef/Downloads/enter-svgrepo-com.svg",
-                            "C:/Users/Yousef/Downloads/cancel-photo-svgrepo-com.svg","C:/Users/Yousef/Downloads/calendar-event-available-svgrepo-com.svg",
-        "C:/Users/Yousef/Downloads/home-workouts-svgrepo-com.svg","C:/Users/Yousef/Downloads/auto-renewal-2-circle-fill-svgrepo-com.svg","C:/Users/Yousef/Downloads/court-playground-svgrepo-com.svg"};
+        "C:/Users/Yousef/Pictures/newGym.png", // 0 - label image (skip or use elsewhere)
+        "C:/Users/Yousef/Downloads/ChatGPT Image Apr 15, 2025, 10_53_31 PM.png", // 1 - logo (still used)
+        "C:/Users/Yousef/Downloads/dashboard-svgrepo-com.svg", // 2
+        "C:/Users/Yousef/Downloads/gym-dumbbell-svgrepo-com.svg", // 3
+        "C:/Users/Yousef/Downloads/group-of-businessmen-svgrepo-com.svg", // 4
+        "C:/Users/Yousef/Downloads/add-user-svgrepo-com.svg", // 5
+        "C:/Users/Yousef/Downloads/user-admin-svgrepo-com.svg", // 6
+        "C:/Users/Yousef/Downloads/notification-bell-1397-svgrepo-com.svg", // 7
+        "C:/Users/Yousef/Downloads/invoice-bill-svgrepo-com.svg", // 8
+        "C:/Users/Yousef/Downloads/profile-round-1342-svgrepo-com.svg", // 9
+        "C:/Users/Yousef/Downloads/setting-4-svgrepo-com.svg", // 10
+        "C:/Users/Yousef/Downloads/logout-svgrepo-com.svg", // 11
+        "C:/Users/Yousef/Downloads/line-chart-up-02-svgrepo-com.svg", // 12
+        "C:/Users/Yousef/Downloads/enter-svgrepo-com.svg", // 13
+        "C:/Users/Yousef/Downloads/cancel-photo-svgrepo-com.svg", // 14
+        "C:/Users/Yousef/Downloads/calendar-event-available-svgrepo-com.svg", // 15
+        "C:/Users/Yousef/Downloads/home-workouts-svgrepo-com.svg", // 16
+        "C:/Users/Yousef/Downloads/auto-renewal-2-circle-fill-svgrepo-com.svg", // 17
+        "C:/Users/Yousef/Downloads/court-playground-svgrepo-com.svg",        // 18
+        "C:/Users/Yousef/Downloads/user-admin-svgrepo-com.svg",     // 19
+        "C:/Users/Yousef/Downloads/sand-clock-svgrepo-com.svg",     // 20
+        "C:/Users/Yousef/Downloads/stretching-svgrepo-com.svg",     //21
+        "C:/Users/Yousef/Downloads/coach-coaching-physical-trainer-svgrepo-com.svg", //22
+        "C:/Users/Yousef/Downloads/money-bag-svgrepo-com.svg",      //23
+        "C:/Users/Yousef/Downloads/line-chart-up-02-svgrepo-com.svg",       //24
+        "C:/Users/Yousef/Downloads/enter-svgrepo-com.svg",                  //25
+        "C:/Users/Yousef/Downloads/cancel-photo-svgrepo-com.svg",           //26
+        "C:/Users/Yousef/Downloads/calendar-event-available-svgrepo-com.svg",   //27
+        "C:/Users/Yousef/Downloads/home-workouts-svgrepo-com.svg",      //28
+        "C:/Users/Yousef/Downloads/auto-renewal-2-circle-fill-svgrepo-com.svg",     //29
+        "C:/Users/Yousef/Downloads/court-playground-svgrepo-com.svg"            //30
+    };
 
-    // Setting Pixmaps for each image
-    ui->label->setPixmap(QPixmap(imagePaths[0]));
+    // Logo only (still QLabel)
     ui->logo->setPixmap(QPixmap(imagePaths[1]));
-    ui->DashBoardIcon->setPixmap(QPixmap(imagePaths[2]));
-    ui->GymManmentIcon->setPixmap(QPixmap(imagePaths[3]));
-    ui->TrainerMangmentIcon->setPixmap(QPixmap(imagePaths[4]));
-    ui->AddUserIcon->setPixmap(QPixmap(imagePaths[5]));
-    ui->AdminIcon->setPixmap(QPixmap(imagePaths[6]));
-    ui->NotificattionIcon->setPixmap(QPixmap(imagePaths[7]));
-    ui->BillingIcon->setPixmap(QPixmap(imagePaths[8]));
-    ui->BillingIcon_2->setPixmap(QPixmap(imagePaths[9]));
-    ui->BillingIcon_3->setPixmap(QPixmap(imagePaths[10]));
-    ui->BillingIcon_4->setPixmap(QPixmap(imagePaths[11]));
-
-    ui->TotalMemberIcon->setPixmap(QPixmap(imagePaths[12]));
-    ui->NotificationDashIcon->setPixmap(QPixmap(imagePaths[13]));
-    ui->SandClockICon->setPixmap(QPixmap(imagePaths[14]));
-    ui->SessionICon->setPixmap(QPixmap(imagePaths[15]));
-    ui->TrainerNumICon->setPixmap(QPixmap(imagePaths[16]));
-    ui->CashIcon->setPixmap(QPixmap(imagePaths[17]));
-    ui->Chart->setPixmap(QPixmap(imagePaths[18]));
-
-    ui->DashBoardIcon_3->setPixmap(QPixmap(imagePaths[19]));
-    ui->GymManmentIcon_3->setPixmap(QPixmap(imagePaths[20]));
-    ui->TrainerMangmentIcon_3->setPixmap(QPixmap(imagePaths[21]));
-    ui->AddUserIcon_3->setPixmap(QPixmap(imagePaths[22]));
-    ui->AdminIcon_3->setPixmap(QPixmap(imagePaths[23]));
-    ui->NotificattionIcon_3->setPixmap(QPixmap(imagePaths[7]));
-    ui->BillingIcon_9->setPixmap(QPixmap(imagePaths[8]));
-    ui->BillingIcon_10->setPixmap(QPixmap(imagePaths[9]));
-    ui->BillingIcon_12->setPixmap(QPixmap(imagePaths[11]));
     ui->logo_3->setPixmap(QPixmap(imagePaths[1]));
-    ui->AddUserIcon_4->setPixmap(QPixmap(imagePaths[24]));
+    ui->label->setPixmap(QPixmap(imagePaths[0]));
+    // Buttons with icons
+    ui->Dashboardbtn->setIcon(QIcon(imagePaths[2]));
+    ui->GymMangbtn->setIcon(QIcon(imagePaths[3]));
+    ui->TMbtn->setIcon(QIcon(imagePaths[4]));
+    ui->Aubtn->setIcon(QIcon(imagePaths[5]));
+    ui->Notibtn->setIcon(QIcon(imagePaths[7]));
+    ui->Billbtn->setIcon(QIcon(imagePaths[8]));
+    ui->ProfileBtn->setIcon(QIcon(imagePaths[9]));
+    ui->SettingBtn->setIcon(QIcon(imagePaths[10]));
+    ui->LogOutBtn->setIcon(QIcon(imagePaths[11]));
+    ui->AdminBtn->setIcon(QIcon(imagePaths[19]));
 
+    // Member buttons
+    ui->Dashboardbtn_3->setIcon(QIcon(imagePaths[2]));
+    ui->GymMangbtn_3->setIcon(QIcon(imagePaths[3]));
+    ui->TMbtn_3->setIcon(QIcon(imagePaths[4]));
+    ui->Aubtn_3->setIcon(QIcon(imagePaths[5]));
+    ui->Aubtn_4->setIcon(QIcon(imagePaths[5]));
+    ui->Notibtn_3->setIcon(QIcon(imagePaths[7]));
+    ui->Billbtn_3->setIcon(QIcon(imagePaths[8]));
+    ui->ProfileBtn_3->setIcon(QIcon(imagePaths[9]));
+    ui->LogOutBtn_3->setIcon(QIcon(imagePaths[11]));
+    ui->Subscriptionbtn->setIcon(QIcon(imagePaths[29]));
+
+    // Optional: set icon size (applies to all buttons)
+    QList<QPushButton*> allButtons = {
+        ui->Dashboardbtn, ui->GymMangbtn, ui->TMbtn, ui->Aubtn, ui->Notibtn, ui->Billbtn,
+        ui->ProfileBtn, ui->SettingBtn, ui->LogOutBtn,
+        ui->Dashboardbtn_3, ui->GymMangbtn_3, ui->TMbtn_3, ui->Aubtn_3, ui->Aubtn_4,
+        ui->Notibtn_3, ui->Billbtn_3, ui->ProfileBtn_3, ui->LogOutBtn_3,ui->AdminBtn
+    };
+
+    for (auto* btn : allButtons) {
+        btn->setIconSize(QSize(32, 32)); // Adjust size as needed
+    }
+    ui->TrainerNumICon->setPixmap(QPixmap(imagePaths[22]));
+    ui->SandClockICon->setPixmap(QPixmap(imagePaths[20]));
+    ui->SessionICon->setPixmap(QPixmap(imagePaths[21]));
+    ui->NotificationDashIcon->setPixmap(QPixmap(imagePaths[7]));
+    ui->TotalMemberIcon->setPixmap(QPixmap(imagePaths[9]));
+    ui->CashIcon->setPixmap(QPixmap(imagePaths[22]));
+    ui->Chart->setPixmap(QPixmap(imagePaths[23]));
 }
+
 
 //-------------------------------------- Auth Handlers --------------------------------------//
 
@@ -297,6 +326,8 @@ void MainWindow::on_Dashboard_16_clicked() {
     if (FileHandler::requestClassesForMember(currentMemberId, filters)) {
         QMessageBox::information(this, "Success", "Class(es) added to your schedule.");
         FileHandler::populateMemberAttendedClasses(ui->tableWidget_3, currentMemberId);
+        QList<QTableWidget*> tablewidgets = {ui->tableWidget,ui->tableWidget_4};
+        FileHandler::populateClassesTable(tablewidgets);
     } else {
         QMessageBox::warning(this, "No Match", "No classes matched your filters.");
     }
@@ -324,9 +355,9 @@ void MainWindow::on_Aubtn_clicked() {
     setActiveSection(ui->Aubtn, "#f1c27d");
 }
 
-void MainWindow::on_Dashboard_5_clicked() {
+void MainWindow::on_AdminBtn_clicked() {
     ui->stackedWidget->setCurrentIndex(4);
-    setActiveSection(ui->Dashboard_5, "#f1c27d");
+    setActiveSection(ui->AdminBtn, "#f1c27d");
 }
 
 void MainWindow::on_Notibtn_clicked() {
@@ -389,23 +420,6 @@ void MainWindow::on_pushButton_clicked() {
 
 //-------------------------------------- Table & Stack Slot Actions --------------------------------------//
 
-void MainWindow::on_tableWidget_cellEntered(int row, int column) {
-    QString className = "Yoga";
-    QString time = "9:00 AM";
-    QString trainer = "Hera";
-    QString status = "Scheduled";
-    QString capacity = "10/15";
-
-    int rowCount = ui->tableWidget->rowCount();
-    ui->tableWidget->insertRow(rowCount);
-
-    ui->tableWidget->setItem(rowCount, 0, new QTableWidgetItem(className));
-    ui->tableWidget->setItem(rowCount, 1, new QTableWidgetItem(time));
-    ui->tableWidget->setItem(rowCount, 2, new QTableWidgetItem(trainer));
-    ui->tableWidget->setItem(rowCount, 3, new QTableWidgetItem(status));
-    ui->tableWidget->setItem(rowCount, 4, new QTableWidgetItem(capacity));
-}
-
 //-------------------------------------- Member Dashboard UI Navigation --------------------------------------//
 
 void MainWindow::on_Dashboardbtn_3_clicked() {
@@ -434,9 +448,9 @@ void MainWindow::on_Aubtn_3_clicked() {
     setActiveSection(ui->Aubtn_3, "#f1c27d");
 }
 
-void MainWindow::on_Dashboard_11_clicked() {
+void MainWindow::on_Subscriptionbtn_clicked() {
     ui->stackedWidget_3->setCurrentIndex(5);
-    setActiveSection(ui->Dashboard_11, "#f1c27d");
+    setActiveSection(ui->Subscriptionbtn, "#f1c27d");
 }
 
 void MainWindow::on_Notibtn_3_clicked() {
@@ -558,6 +572,7 @@ void MainWindow::on_Dashboard_17_clicked()
     };
     FileHandler::filterMemberClasses(ui->tableWidget_3,currentMemberId,filters);
 }
+
 
 
 
